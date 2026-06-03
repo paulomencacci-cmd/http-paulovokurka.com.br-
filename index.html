@@ -3,10 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Paulo Vokurka | Psicólogo Clínico</title>
+
+  <!-- SEO básico -->
+  <title>Paulo Vokurka | Psicólogo Clínico Online · TCC · CRP 06/211865</title>
+  <meta name="description" content="Psicólogo clínico online especializado em ansiedade, estresse e esgotamento. Atendimento por TCC para profissionais. CRP 06/211865. Agende sua consulta pelo WhatsApp." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://paulovokurka.com.br/" />
+
+  <!-- Open Graph / WhatsApp preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Paulo Vokurka | Psicólogo Clínico Online" />
+  <meta property="og:description" content="Atendimento online para ansiedade, estresse e esgotamento. TCC com base científica. Agende sua consulta." />
+  <meta property="og:image" content="paulo.png" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- Preload da foto hero (LCP) -->
+  <link rel="preload" as="image" href="paulo.png" fetchpriority="high" />
+
+  <!-- Fontes: preconnect + display=swap para não bloquear renderização -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Schema.org: Person + LocalBusiness (rich results Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Paulo Vokurka",
+    "jobTitle": "Psicólogo Clínico",
+    "description": "Psicólogo clínico especializado em ansiedade, estresse e esgotamento. Atendimento online via TCC.",
+    "url": "https://paulovokurka.com.br/",
+    "image": "https://paulovokurka.com.br/paulo.png",
+    "telephone": "+5511945918890",
+    "sameAs": ["https://wa.me/5511945918890"],
+    "knowsAbout": ["Terapia Cognitivo-Comportamental", "Ansiedade", "Saúde Mental Masculina", "Esgotamento", "Estresse Corporativo"],
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "CRP 06/211865"
+    },
+    "offers": {
+      "@type": "Service",
+      "name": "Psicoterapia Online",
+      "areaServed": "BR",
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://wa.me/5511945918890"
+      }
+    }
+  }
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -22,6 +68,8 @@
       --accent-light: #a08060;
       --accent-pale: #f0e8dc;
       --green: #4a6045;
+      --wpp-green: #25D366;
+      --wpp-green-dark: #128C7E;
       --border: rgba(90,70,50,0.12);
     }
 
@@ -76,34 +124,26 @@
 
     .nav-links a:hover { color: var(--accent); }
 
-    .nav-cta {
-      background: var(--accent) !important;
-      color: white !important;
-      padding: 0.55rem 1.4rem;
-      border-radius: 50px;
-      transition: background 0.3s !important;
-    }
-
-    .nav-cta:hover { background: var(--accent-light) !important; }
+    /* nav-cta já definido acima com cor WPP */
 
     /* HERO */
     .hero {
       position: relative;
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 400px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       overflow: hidden;
       background: var(--cream);
+      padding-top: 5rem;
     }
 
-    /* Fundo decorativo lado direito */
+    /* Fundo decorativo inferior */
     .hero::before {
       content: '';
       position: absolute;
-      top: 0; right: 0;
-      width: 44%;
-      height: 100%;
+      bottom: 0; left: 0; right: 0;
+      height: 55%;
       background: linear-gradient(160deg, var(--stone) 0%, var(--accent-pale) 100%);
       z-index: 0;
     }
@@ -111,19 +151,47 @@
     .hero-bg-img { display: none; }
     .hero-overlay { display: none; }
 
+    /* Foto centralizada no topo do hero */
+    .hero-top-photo-wrap {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-top-photo {
+      width: 210px;
+      height: 210px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 8px 40px rgba(90,60,30,0.18);
+      display: block;
+    }
+
     /* Conteúdo do hero */
     .hero-content {
       position: relative;
       z-index: 2;
-      display: contents;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
     }
 
     .hero-text {
       position: relative;
       z-index: 2;
-      padding: 9rem 4% 5rem 5%;
-      max-width: 560px;
+      padding: 0 5% 4rem;
+      max-width: 620px;
+      text-align: center;
     }
+
+    .hero-sub { margin-left: auto; margin-right: auto; }
+    .btn-row { justify-content: center; }
 
     .hero-badge {
       display: inline-flex;
@@ -215,18 +283,67 @@
       color: white;
     }
 
-    /* Coluna da foto no hero */
-    .hero-image-col {
-      position: relative;
-      z-index: 2;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
+    /* Botão WhatsApp verde */
+    .btn-wpp {
+      display: inline-flex;
       align-items: center;
-      justify-content: flex-end;
-      padding-bottom: 3rem;
-      gap: 1rem;
+      gap: 0.6rem;
+      background: var(--wpp-green);
+      color: white;
+      text-decoration: none;
+      padding: 0.9rem 1.8rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.35);
     }
+
+    .btn-wpp:hover {
+      background: var(--wpp-green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(37,211,102,0.45);
+    }
+
+    /* Nav CTA verde WPP */
+    .nav-cta {
+      background: var(--wpp-green) !important;
+      color: white !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 50px;
+      transition: background 0.3s !important;
+    }
+    .nav-cta:hover { background: var(--wpp-green-dark) !important; }
+
+    /* Botão flutuante WhatsApp */
+    .wpp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 9999;
+      width: 60px;
+      height: 60px;
+      background: var(--wpp-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.3s, background 0.3s;
+    }
+
+    .wpp-float:hover {
+      background: var(--wpp-green-dark);
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(37,211,102,0.6);
+    }
+
+    .wpp-float svg { width: 30px; height: 30px; }
+
+    /* Coluna da foto no hero - oculta pois foto foi para o topo */
+    .hero-image-col { display: none; }
 
     .hero-photo {
       width: 320px;
@@ -755,15 +872,19 @@
 <section class="hero" id="inicio">
   <img src="paulo.png" alt="" class="hero-bg-img" />
   <div class="hero-overlay"></div>
+  <!-- Foto centralizada no topo -->
+  <div class="hero-top-photo-wrap">
+    <img src="paulo.png" alt="Paulo Vokurka, Psicólogo Clínico" class="hero-top-photo" fetchpriority="high" width="210" height="210" />
+  </div>
   <div class="hero-content">
     <div class="hero-text">
       <div class="hero-badge fade-up">Psicólogo Clínico · CRP 06/211865</div>
       <h1 class="fade-up">Você não precisa <em>carregar tudo</em> sozinho</h1>
       <p class="hero-sub fade-up">Atendimento online especializado para profissionais que enfrentam estresse, ansiedade e esgotamento. Com base científica, sem julgamentos.</p>
       <div class="btn-row fade-up">
-        <a href="https://wa.me/5511945918890?text=Ol%C3%A1%2C+Paulo!+Gostaria+de+agendar+uma+consulta." class="btn-primary" target="_blank">
+        <a href="https://wa.me/5511945918890?text=Ol%C3%A1%2C+Paulo!+Gostaria+de+agendar+uma+consulta." class="btn-wpp" target="_blank">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.528 5.852L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.728.977.993-3.63-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
-          Agendar pelo WhatsApp
+          Agendar consulta
         </a>
         <a href="#sobre" class="btn-secondary">Conhecer mais</a>
       </div>
@@ -802,7 +923,7 @@
     </div>
   </div>
   <div class="sobre-img-wrap fade-up">
-    <img src="paulo.png" alt="Paulo Vokurka" class="sobre-img" />
+    <img src="paulo.png" alt="Paulo Vokurka, Psicólogo Clínico" class="sobre-img" loading="lazy" width="600" height="500" />
     <div class="crp-badge">
       <strong>CRP 06/211865</strong>
       Psicólogo Clínico · TCC
@@ -959,9 +1080,9 @@
 <section class="cta-section">
   <h2 class="fade-up">Pronto para <em style="color:rgba(255,255,255,0.7)">dar o primeiro passo?</em></h2>
   <p class="fade-up">Entre em contato pelo WhatsApp. Sem compromisso, sem formulários. Só uma conversa.</p>
-  <a href="https://wa.me/5511945918890?text=Ol%C3%A1%2C+Paulo!+Gostaria+de+agendar+uma+consulta." class="btn-white fade-up" target="_blank">
+  <a href="https://wa.me/5511945918890?text=Ol%C3%A1%2C+Paulo!+Gostaria+de+agendar+uma+consulta." class="btn-white fade-up" target="_blank" style="background:var(--wpp-green);color:white;box-shadow:0 4px 24px rgba(37,211,102,0.4);">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.528 5.852L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.728.977.993-3.63-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
-    Falar com Paulo agora
+    Agendar consulta
   </a>
 </section>
 
@@ -995,6 +1116,14 @@
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
+
+<!-- BOTÃO FLUTUANTE WHATSAPP -->
+<a href="https://wa.me/5511945918890?text=Ol%C3%A1%2C+Paulo!+Gostaria+de+agendar+uma+consulta." class="wpp-float" target="_blank" title="Agendar consulta pelo WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.528 5.852L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.728.977.993-3.63-.234-.374A9.818 9.818 0 1112 21.818z"/>
+  </svg>
+</a>
 
 </body>
 </html>
