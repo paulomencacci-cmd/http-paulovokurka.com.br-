@@ -6,29 +6,31 @@
   <title>Paulo Vokurka | Psicólogo Clínico</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0d0d0d;
-      --surface: #141414;
-      --surface2: #1a1a1a;
-      --border: rgba(255,255,255,0.07);
-      --gold: #b89d6a;
-      --gold-light: #d4b98a;
-      --text: #e8e2d8;
-      --text-muted: #7a7570;
-      --text-dim: #4a4540;
-      --white: #f5f0ea;
+      --cream: #faf7f2;
+      --warm-white: #ffffff;
+      --stone: #e8e0d4;
+      --stone-dark: #d4c8b8;
+      --text: #2a2420;
+      --text-mid: #5a4f45;
+      --text-soft: #9a8f85;
+      --accent: #7a6048;
+      --accent-light: #a08060;
+      --accent-pale: #f0e8dc;
+      --green: #4a6045;
+      --border: rgba(90,70,50,0.12);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      background: var(--bg);
+      background: var(--cream);
       color: var(--text);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Jost', sans-serif;
       font-weight: 300;
       line-height: 1.7;
       overflow-x: hidden;
@@ -39,479 +41,689 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      padding: 1.5rem 4rem;
+      padding: 1.2rem 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(to bottom, rgba(13,13,13,0.95), transparent);
-      backdrop-filter: blur(8px);
+      background: rgba(250,247,242,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
       font-weight: 400;
-      letter-spacing: 0.15em;
-      color: var(--gold);
-      text-transform: uppercase;
+      color: var(--accent);
+      letter-spacing: 0.02em;
     }
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2rem;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
-      color: var(--text-muted);
+      color: var(--text-mid);
       text-decoration: none;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
       transition: color 0.3s;
     }
 
-    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent) !important;
+      color: white !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 50px;
+      transition: background 0.3s !important;
+    }
+
+    .nav-cta:hover { background: var(--accent-light) !important; }
 
     /* HERO */
     .hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      padding: 0 4rem;
       position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
       overflow: hidden;
     }
 
-    .hero::before {
-      content: '';
+    /* Foto ocupa tela inteira como fundo */
+    .hero-bg-img {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 60% 70% at 70% 50%, rgba(184,157,106,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero-text { padding-right: 4rem; }
-
-    .hero-eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      width: 2rem;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 5vw, 5.5rem);
-      font-weight: 300;
-      line-height: 1.05;
-      color: var(--white);
-      margin-bottom: 1.5rem;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--gold-light);
-    }
-
-    .hero-sub {
-      font-size: 1rem;
-      color: var(--text-muted);
-      max-width: 420px;
-      margin-bottom: 3rem;
-      line-height: 1.8;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: var(--gold);
-      color: #0d0d0d;
-      text-decoration: none;
-      padding: 1rem 2rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .btn-primary:hover {
-      background: var(--gold-light);
-      transform: translateY(-2px);
-    }
-
-    .btn-primary svg { width: 18px; height: 18px; }
-
-    .hero-image-wrap {
-      position: relative;
-      height: 100vh;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-    }
-
-    .hero-image-frame {
-      position: relative;
-      width: 100%;
-      max-width: 460px;
-      height: 85vh;
-    }
-
-    .hero-image-frame::before {
-      content: '';
-      position: absolute;
-      top: -1px; right: -1px;
-      width: 70%;
-      height: 55%;
-      border-top: 1px solid var(--gold);
-      border-right: 1px solid var(--gold);
-      opacity: 0.4;
-    }
-
-    .hero-image-frame::after {
-      content: '';
-      position: absolute;
-      bottom: -1px; left: -1px;
-      width: 70%;
-      height: 55%;
-      border-bottom: 1px solid var(--gold);
-      border-left: 1px solid var(--gold);
-      opacity: 0.4;
-    }
-
-    .hero-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center top;
-      filter: grayscale(20%) contrast(1.05);
+      z-index: 0;
     }
 
-    .hero-crp {
+    /* Camada de gradiente sobre a foto */
+    .hero-overlay {
       position: absolute;
-      bottom: 2rem;
-      right: -1rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1rem 1.5rem;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(to top, rgba(20,14,10,0.92) 0%, rgba(20,14,10,0.45) 50%, rgba(20,14,10,0.15) 100%),
+        linear-gradient(to right, rgba(20,14,10,0.5) 0%, transparent 60%);
+    }
+
+    /* Textura sutil de grão */
+    .hero-overlay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* Conteúdo do hero sobre as camadas */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 0 5% 5rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: flex-end;
+      gap: 3rem;
+    }
+
+    .hero-text { max-width: 600px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(8px);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
       font-size: 0.72rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent-light);
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4.5rem);
+      font-weight: 500;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 1.2rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent-light);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      padding: 0.9rem 1.8rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 24px rgba(122,96,72,0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(122,96,72,0.5);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      color: white;
+      text-decoration: none;
+      padding: 0.9rem 1.8rem;
+      border-radius: 50px;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.18);
+    }
+
+    /* Cards flutuantes sobre a foto */
+    .hero-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .hero-float-card {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 1rem 1.4rem;
+      min-width: 200px;
+      transition: transform 0.3s;
+    }
+
+    .hero-float-card:hover { transform: translateY(-3px); }
+
+    .hero-float-card-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-float-card-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: white;
+      font-weight: 500;
+    }
+
+    .hero-float-card-value span {
+      color: var(--accent-light);
+    }
+
+    /* SECTIONS */
+    section { padding: 6rem 5%; }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    /* SECTION BASE */
-    section { padding: 7rem 4rem; }
-
-    .section-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
+      color: var(--accent);
       margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
     }
 
-    .section-label::before {
+    .section-tag::before {
       content: '';
-      width: 1.5rem;
-      height: 1px;
-      background: var(--gold);
+      width: 20px; height: 1.5px;
+      background: var(--accent);
     }
 
     h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 3.5vw, 3.2rem);
-      font-weight: 300;
-      color: var(--white);
-      line-height: 1.2;
-      margin-bottom: 2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 1.2rem;
     }
 
-    h2 em { font-style: italic; color: var(--gold-light); }
+    h2 em { font-style: italic; color: var(--accent); }
 
     /* SOBRE */
     .sobre {
+      background: white;
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 6rem;
-      align-items: start;
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: center;
     }
-
-    .sobre-left { position: sticky; top: 8rem; }
 
     .sobre-text p {
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      color: var(--text-mid);
       font-size: 0.95rem;
       line-height: 1.9;
+      margin-bottom: 1.3rem;
     }
 
-    .sobre-text p:first-child {
-      font-size: 1.1rem;
+    .sobre-text p:first-of-type {
+      font-size: 1.05rem;
       color: var(--text);
-      line-height: 1.8;
     }
 
     .sobre-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-top: 2.5rem;
+      margin-top: 2rem;
     }
 
     .tag {
-      border: 1px solid var(--border);
-      padding: 0.4rem 1rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
+      background: var(--accent-pale);
+      border: 1px solid var(--stone-dark);
+      color: var(--accent);
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
     }
 
-    /* PARA QUEM É */
-    .para-quem { background: var(--bg); }
+    .sobre-img-wrap {
+      position: relative;
+    }
 
-    .para-quem-grid {
+    .sobre-img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 24px;
+    }
+
+    .crp-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: white;
+      border-radius: 12px;
+      padding: 0.8rem 1.2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      font-size: 0.75rem;
+      color: var(--text-mid);
+      font-weight: 400;
+    }
+
+    .crp-badge strong { display: block; color: var(--accent); font-weight: 500; font-size: 0.85rem; }
+
+    /* PARA QUEM */
+    .para-quem { background: var(--cream); }
+
+    .para-quem-intro {
+      max-width: 560px;
+      margin-bottom: 3.5rem;
+    }
+
+    .para-quem-intro p {
+      color: var(--text-mid);
+      font-size: 1rem;
+    }
+
+    .cards-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      margin-top: 4rem;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
       border: 1px solid var(--border);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .para-quem-card {
-      background: var(--surface);
-      padding: 2.5rem;
-      position: relative;
-      transition: background 0.3s;
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(122,96,72,0.1);
     }
 
-    .para-quem-card:hover { background: var(--surface2); }
-
-    .card-number {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.5rem;
-      font-weight: 300;
-      color: var(--text-dim);
-      line-height: 1;
-      margin-bottom: 1rem;
+    .card-icon {
+      width: 44px; height: 44px;
+      background: var(--accent-pale);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.2rem;
+      font-size: 1.2rem;
     }
 
-    .card-title {
-      font-size: 0.9rem;
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
       font-weight: 500;
-      color: var(--white);
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.03em;
+      color: var(--text);
+      margin-bottom: 0.6rem;
     }
 
-    .card-desc {
+    .card p {
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: var(--text-soft);
       line-height: 1.7;
     }
 
     /* COMO FUNCIONA */
-    .como-funciona { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .como-funciona {
+      background: var(--accent-pale);
+    }
 
-    .steps {
-      margin-top: 4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: var(--stone-dark);
+      z-index: 0;
     }
 
     .step {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 2rem;
-      align-items: start;
-      padding: 2.5rem 0;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.2s;
+      text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
-    .step:last-child { border-bottom: none; }
-
-    .step-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
-      font-weight: 300;
-      color: var(--gold);
-      opacity: 0.5;
-      line-height: 1;
-      padding-top: 0.2rem;
-    }
-
-    .step-content h3 {
-      font-size: 1rem;
+    .step-circle {
+      width: 56px; height: 56px;
+      background: white;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--accent);
       font-weight: 500;
-      color: var(--white);
+    }
+
+    .step h3 {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
       margin-bottom: 0.5rem;
     }
 
-    .step-content p {
-      font-size: 0.88rem;
-      color: var(--text-muted);
+    .step p {
+      font-size: 0.8rem;
+      color: var(--text-mid);
       line-height: 1.7;
-      max-width: 580px;
     }
 
     /* DEPOIMENTOS */
-    .depoimentos { background: var(--bg); }
+    .depoimentos { background: white; }
 
     .dep-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
-      margin-top: 4rem;
+      margin-top: 3.5rem;
     }
 
     .dep-card {
-      background: var(--surface);
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 2rem;
       border: 1px solid var(--border);
-      padding: 2.5rem;
       position: relative;
     }
 
-    .dep-card::before {
-      content: '\201C';
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 5rem;
-      color: var(--gold);
-      opacity: 0.2;
-      position: absolute;
-      top: 0.5rem;
-      left: 1.5rem;
-      line-height: 1;
+    .dep-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: var(--accent);
+      opacity: 0.3;
+      line-height: 0.5;
+      margin-bottom: 1rem;
     }
 
     .dep-text {
       font-size: 0.9rem;
-      color: var(--text-muted);
+      color: var(--text-mid);
       line-height: 1.8;
-      margin-bottom: 1.5rem;
       font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    .dep-stars {
+      color: #c8a96a;
+      font-size: 0.8rem;
+      margin-bottom: 0.5rem;
     }
 
     .dep-autor {
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.04em;
     }
 
-    /* CTA */
-    .cta {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      text-align: center;
-      padding: 8rem 4rem;
+    /* FAQ */
+    .faq { background: var(--cream); }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 3.5rem;
     }
 
-    .cta h2 { margin-bottom: 1rem; }
+    .faq-item {
+      background: white;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
 
-    .cta p {
-      color: var(--text-muted);
-      margin-bottom: 3rem;
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.3rem 1.5rem;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: color 0.3s;
+    }
+
+    .faq-question:hover { color: var(--accent); }
+
+    .faq-icon {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--accent-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
       font-size: 1rem;
+      color: var(--accent);
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--accent);
+      color: white;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+      font-size: 0.87rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+      padding: 0 1.5rem;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding: 0 1.5rem 1.3rem;
+    }
+
+    /* CTA FINAL */
+    .cta-section {
+      background: var(--accent);
+      padding: 6rem 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -10%;
+      width: 50%;
+      height: 200%;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+
+    .cta-section h2 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: rgba(255,255,255,0.75);
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: white;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 1rem 2.2rem;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      transition: transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
     }
 
     /* FOOTER */
     footer {
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-      padding: 2.5rem 4rem;
-      display: flex;
-      justify-content: space-between;
+      background: var(--text);
+      padding: 3rem 5%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
       align-items: center;
     }
 
     .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      color: var(--gold);
-      letter-spacing: 0.1em;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--stone);
     }
 
-    .footer-info {
+    .footer-mid {
+      text-align: center;
       font-size: 0.75rem;
-      color: var(--text-dim);
-      text-align: right;
-      line-height: 1.7;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.8;
     }
 
-    /* DIVIDER */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-      opacity: 0.2;
+    .footer-right {
+      text-align: right;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.8;
     }
 
     /* ANIMATIONS */
-    .fade-in {
+    .fade-up {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
-    .fade-in.visible {
+    .fade-up.visible {
       opacity: 1;
       transform: none;
     }
 
     /* MOBILE */
     @media (max-width: 900px) {
-      nav { padding: 1.2rem 1.5rem; }
+      nav { padding: 1rem 5%; }
       .nav-links { display: none; }
 
-      .hero {
+      .hero-content {
         grid-template-columns: 1fr;
-        padding: 6rem 1.5rem 3rem;
-        min-height: auto;
+        padding: 0 5% 3.5rem;
+        gap: 2rem;
       }
 
-      .hero-text { padding-right: 0; }
+      .hero-cards { flex-direction: row; flex-wrap: wrap; }
+      .hero-float-card { min-width: 140px; }
 
-      .hero-image-wrap {
-        height: 70vw;
-        margin-top: 3rem;
-      }
+      .sobre { grid-template-columns: 1fr; gap: 2.5rem; }
+      .sobre-img { height: 360px; }
 
-      .hero-image-frame { height: 100%; max-width: 100%; }
-
-      section { padding: 4rem 1.5rem; }
-
-      .sobre { grid-template-columns: 1fr; gap: 3rem; }
-      .sobre-left { position: static; }
-
-      .para-quem-grid { grid-template-columns: 1fr; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid::before { display: none; }
       .dep-grid { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
 
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
-      .footer-info { text-align: center; }
+      footer { grid-template-columns: 1fr; text-align: center; }
+      .footer-right { text-align: center; }
     }
   </style>
 </head>
@@ -525,48 +737,58 @@
     <li><a href="#para-quem">Para quem</a></li>
     <li><a href="#como-funciona">Como funciona</a></li>
     <li><a href="#depoimentos">Depoimentos</a></li>
-    <li><a href="#contato">Contato</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://wa.me/5511945918890?text=Ol%C3%A1%2C+Paulo!+Gostaria+de+agendar+uma+consulta." target="_blank" class="nav-cta">Agendar consulta</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="inicio">
-  <div class="hero-text fade-in">
-    <p class="hero-eyebrow">Psicólogo Clínico · TCC</p>
-    <h1>Clareza para <em>quem carrega</em> muito</h1>
-    <p class="hero-sub">
-      Atendimento online especializado para profissionais que enfrentam estresse, ansiedade e esgotamento — sem julgamentos, com objetivos reais.
-    </p>
-    <a href="https://wa.me/5511945918890?text=Ol%C3%A1%2C+Paulo!+Gostaria+de+agendar+uma+consulta." class="btn-primary" target="_blank">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.528 5.852L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.728.977.993-3.63-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
-      Agendar pelo WhatsApp
-    </a>
-  </div>
-  <div class="hero-image-wrap fade-in">
-    <div class="hero-image-frame">
-      <img src="paulo.png" alt="Paulo Vokurka, Psicólogo" class="hero-img" />
+  <!-- Foto como fundo total -->
+  <img src="paulo.png" alt="Paulo Vokurka" class="hero-bg-img" />
+  <!-- Camadas de gradiente e textura -->
+  <div class="hero-overlay"></div>
+  <!-- Conteúdo sobre as camadas -->
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge fade-up">Psicólogo Clínico · CRP 06/211865</div>
+      <h1 class="fade-up">Você não precisa <em>carregar tudo</em> sozinho</h1>
+      <p class="hero-sub fade-up">Atendimento online especializado para profissionais que enfrentam estresse, ansiedade e esgotamento. Com base científica, sem julgamentos.</p>
+      <div class="btn-row fade-up">
+        <a href="https://wa.me/5511945918890?text=Ol%C3%A1%2C+Paulo!+Gostaria+de+agendar+uma+consulta." class="btn-primary" target="_blank">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.528 5.852L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.728.977.993-3.63-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+          Agendar pelo WhatsApp
+        </a>
+        <a href="#sobre" class="btn-secondary">Conhecer mais</a>
+      </div>
     </div>
-    <div class="hero-crp">CRP · Psicólogo Clínico</div>
+    <!-- Cards flutuantes -->
+    <div class="hero-cards fade-up">
+      <div class="hero-float-card">
+        <div class="hero-float-card-label">Abordagem</div>
+        <div class="hero-float-card-value"><span>TCC</span> · Cognitivo-Comportamental</div>
+      </div>
+      <div class="hero-float-card">
+        <div class="hero-float-card-label">Modalidade</div>
+        <div class="hero-float-card-value">100% <span>Online</span></div>
+      </div>
+      <div class="hero-float-card">
+        <div class="hero-float-card-label">Especialidade</div>
+        <div class="hero-float-card-value">Saúde Mental <span>Masculina</span></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- SOBRE -->
 <section class="sobre" id="sobre">
-  <div class="sobre-left fade-in">
-    <p class="section-label">Sobre mim</p>
-    <h2>Uma escuta que entende <em>o mundo real</em></h2>
-  </div>
-  <div class="sobre-text fade-in">
-    <p>
-      Como psicólogo clínico, utilizo minha sólida bagagem no ambiente corporativo para fundamentar e enriquecer a prática no consultório. Ter vivenciado de perto a rotina intensa, as relações de poder e as complexas engrenagens das organizações me proporciona uma compreensão profunda e realista sobre as dores do profissional moderno.
-    </p>
-    <p>
-      Hoje, dedico-me integralmente à clínica, oferecendo um espaço ético de escuta e acolhimento para auxiliar as pessoas a lidarem com o estresse, a ansiedade, o esgotamento e os impactos que as pressões cotidianas exercem sobre a saúde mental e a vida pessoal.
-    </p>
-    <p>
-      Para guiar esse processo, utilizo a <strong style="color: var(--text)">Terapia Cognitivo-Comportamental (TCC)</strong> — uma abordagem científica, estruturada e focada no presente. O princípio fundamental é que não são as situações em si que nos perturbam, mas sim a maneira como as interpretamos. Em nossas sessões, trabalhamos de forma colaborativa para mapear como esses pensamentos influenciam suas emoções e comportamentos.
-    </p>
-    <div class="sobre-tags">
+  <div class="sobre-text">
+    <div class="section-tag fade-up">Sobre mim</div>
+    <h2 class="fade-up">Uma escuta que entende <em>o mundo real</em></h2>
+    <p class="fade-up">Como psicólogo clínico, utilizo minha sólida bagagem no ambiente corporativo para fundamentar e enriquecer a prática no consultório. Ter vivenciado de perto a rotina intensa, as relações de poder e as complexas engrenagens das organizações me proporciona uma compreensão profunda e realista sobre as dores do profissional moderno.</p>
+    <p class="fade-up">Hoje, dedico-me integralmente à clínica, oferecendo um espaço ético de escuta e acolhimento para auxiliar as pessoas a lidarem com o estresse, a ansiedade, o esgotamento e os impactos que as pressões cotidianas exercem sobre a saúde mental e a vida pessoal.</p>
+    <p class="fade-up">Para guiar esse processo, utilizo a <strong>Terapia Cognitivo-Comportamental (TCC)</strong> — uma abordagem científica, estruturada e focada no presente. Trabalhamos de forma colaborativa para mapear como seus pensamentos influenciam emoções e comportamentos, desenvolvendo ferramentas práticas e reais.</p>
+    <div class="sobre-tags fade-up">
       <span class="tag">TCC</span>
       <span class="tag">Ansiedade</span>
       <span class="tag">Esgotamento</span>
@@ -575,138 +797,199 @@
       <span class="tag">Atendimento Online</span>
     </div>
   </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- PARA QUEM É -->
-<section class="para-quem" id="para-quem">
-  <p class="section-label fade-in">Para quem é</p>
-  <h2 class="fade-in">Você se reconhece <em>em algum desses cenários?</em></h2>
-  <div class="para-quem-grid">
-    <div class="para-quem-card fade-in">
-      <div class="card-number">01</div>
-      <div class="card-title">O profissional sobrecarregado</div>
-      <p class="card-desc">Sente que trabalha demais, não consegue desligar e carrega tudo sozinho. A produtividade está alta, mas o custo interno também.</p>
-    </div>
-    <div class="para-quem-card fade-in">
-      <div class="card-number">02</div>
-      <div class="card-title">Quem convive com ansiedade</div>
-      <p class="card-desc">Pensamentos acelerados, dificuldade de concentração, sensação de que algo vai dar errado. A ansiedade está presente em momentos que antes eram simples.</p>
-    </div>
-    <div class="para-quem-card fade-in">
-      <div class="card-number">03</div>
-      <div class="card-title">O homem que não pede ajuda</div>
-      <p class="card-desc">Cresceu aprendendo a resolver tudo por conta própria. Buscar apoio parece fraqueza — mas o peso está pesado demais para carregar só.</p>
-    </div>
-    <div class="para-quem-card fade-in">
-      <div class="card-number">04</div>
-      <div class="card-title">Quem vive no piloto automático</div>
-      <p class="card-desc">Os dias passam, as entregas acontecem, mas a sensação de esvaziamento persiste. Falta sentido, presença, conexão com o que realmente importa.</p>
-    </div>
-    <div class="para-quem-card fade-in">
-      <div class="card-number">05</div>
-      <div class="card-title">Em transição de vida ou carreira</div>
-      <p class="card-desc">Mudança de emprego, relacionamento, cidade. Momentos de transição trazem incerteza e, muitas vezes, uma crise de identidade silenciosa.</p>
-    </div>
-    <div class="para-quem-card fade-in">
-      <div class="card-number">06</div>
-      <div class="card-title">Quem quer resultados práticos</div>
-      <p class="card-desc">Não quer só desabafar. Quer entender o que está acontecendo e desenvolver ferramentas concretas para mudar padrões que já não servem.</p>
+  <div class="sobre-img-wrap fade-up">
+    <img src="paulo.png" alt="Paulo Vokurka" class="sobre-img" />
+    <div class="crp-badge">
+      <strong>CRP 06/211865</strong>
+      Psicólogo Clínico · TCC
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- PARA QUEM -->
+<section class="para-quem" id="para-quem">
+  <div class="para-quem-intro">
+    <div class="section-tag fade-up">Para quem é</div>
+    <h2 class="fade-up">Você se reconhece <em>em algum desses cenários?</em></h2>
+    <p class="fade-up">O atendimento é voltado para pessoas que enfrentam desafios emocionais no contexto da vida profissional e pessoal — especialmente homens que cresceram aprendendo que pedir ajuda é fraqueza.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card fade-up">
+      <div class="card-icon">💼</div>
+      <h3>O profissional sobrecarregado</h3>
+      <p>Trabalha demais, não consegue desligar e carrega tudo sozinho. A produtividade está alta, mas o custo interno também.</p>
+    </div>
+    <div class="card fade-up">
+      <div class="card-icon">🌀</div>
+      <h3>Quem convive com ansiedade</h3>
+      <p>Pensamentos acelerados, dificuldade de concentração, sensação de que algo vai dar errado mesmo sem motivo claro.</p>
+    </div>
+    <div class="card fade-up">
+      <div class="card-icon">🧱</div>
+      <h3>O homem que não pede ajuda</h3>
+      <p>Cresceu resolvendo tudo sozinho. Buscar apoio parece fraqueza — mas o peso está pesado demais para carregar só.</p>
+    </div>
+    <div class="card fade-up">
+      <div class="card-icon">🔁</div>
+      <h3>Quem vive no piloto automático</h3>
+      <p>Os dias passam, as entregas acontecem, mas a sensação de esvaziamento persiste. Falta sentido e presença.</p>
+    </div>
+    <div class="card fade-up">
+      <div class="card-icon">🔄</div>
+      <h3>Em transição de vida ou carreira</h3>
+      <p>Mudança de emprego, relacionamento, cidade. Momentos de transição trazem uma crise de identidade silenciosa.</p>
+    </div>
+    <div class="card fade-up">
+      <div class="card-icon">🎯</div>
+      <h3>Quem quer resultados práticos</h3>
+      <p>Não quer só desabafar. Quer entender o que está acontecendo e desenvolver ferramentas para mudar padrões.</p>
+    </div>
+  </div>
+</section>
 
 <!-- COMO FUNCIONA -->
 <section class="como-funciona" id="como-funciona">
-  <p class="section-label fade-in">Como funciona</p>
-  <h2 class="fade-in">Simples, online e <em>no seu ritmo</em></h2>
-  <div class="steps">
-    <div class="step fade-in">
-      <div class="step-num">01</div>
-      <div class="step-content">
-        <h3>Primeiro contato pelo WhatsApp</h3>
-        <p>Mande uma mensagem descrevendo brevemente o que você está vivendo. Sem formulários, sem burocracia. Responderei para conversarmos sobre disponibilidade e tirar qualquer dúvida antes de marcarmos.</p>
-      </div>
+  <div class="section-tag fade-up">Como funciona</div>
+  <h2 class="fade-up">Simples, online e <em>no seu ritmo</em></h2>
+  <div class="steps-grid">
+    <div class="step fade-up">
+      <div class="step-circle">01</div>
+      <h3>Primeiro contato</h3>
+      <p>Mande uma mensagem pelo WhatsApp descrevendo brevemente o que você está vivendo. Sem formulários.</p>
     </div>
-    <div class="step fade-in">
-      <div class="step-num">02</div>
-      <div class="step-content">
-        <h3>Sessão inicial de avaliação</h3>
-        <p>A primeira sessão é um espaço para nos conhecermos. Você conta o que está acontecendo, eu explico como trabalhamos juntos e avaliamos se faz sentido seguir em frente.</p>
-      </div>
+    <div class="step fade-up">
+      <div class="step-circle">02</div>
+      <h3>Sessão inicial</h3>
+      <p>A primeira sessão é um espaço para nos conhecermos e avaliar se faz sentido seguirmos juntos.</p>
     </div>
-    <div class="step fade-in">
-      <div class="step-num">03</div>
-      <div class="step-content">
-        <h3>Atendimento semanal pelo Google Meet</h3>
-        <p>As sessões acontecem online, por vídeo, com duração de 50 minutos. Você acessa de onde estiver — de casa, do escritório, de qualquer lugar com privacidade.</p>
-      </div>
+    <div class="step fade-up">
+      <div class="step-circle">03</div>
+      <h3>Sessões semanais</h3>
+      <p>Atendimento online por vídeo, 50 minutos, de onde você estiver — casa, escritório, qualquer lugar.</p>
     </div>
-    <div class="step fade-in">
-      <div class="step-num">04</div>
-      <div class="step-content">
-        <h3>Trabalho colaborativo com objetivos claros</h3>
-        <p>Não existe um roteiro rígido, mas existe direção. Usamos a TCC para identificar padrões, desenvolver ferramentas práticas e monitorar seu progresso ao longo do processo.</p>
-      </div>
+    <div class="step fade-up">
+      <div class="step-circle">04</div>
+      <h3>Resultados reais</h3>
+      <p>Mapeamos padrões, desenvolvemos ferramentas práticas e monitoramos seu progresso ao longo do processo.</p>
     </div>
   </div>
 </section>
 
 <!-- DEPOIMENTOS -->
 <section class="depoimentos" id="depoimentos">
-  <p class="section-label fade-in">Depoimentos</p>
-  <h2 class="fade-in">O que dizem <em>quem já deu o passo</em></h2>
+  <div class="section-tag fade-up">Depoimentos</div>
+  <h2 class="fade-up">O que dizem <em>quem já deu o passo</em></h2>
   <div class="dep-grid">
-    <div class="dep-card fade-in">
+    <div class="dep-card fade-up">
+      <div class="dep-quote">"</div>
       <p class="dep-text">Cheguei achando que só precisava de uma válvula de escape. Fui entendendo que o problema era mais fundo — e o Paulo foi cirúrgico em me ajudar a ver isso sem me fazer sentir fraco por isso.</p>
+      <div class="dep-stars">★★★★★</div>
       <div class="dep-autor">M.R. · Gerente de Projetos</div>
     </div>
-    <div class="dep-card fade-in">
+    <div class="dep-card fade-up">
+      <div class="dep-quote">"</div>
       <p class="dep-text">Nunca fui de falar sobre o que sinto. O Paulo cria um ambiente onde isso vira natural. E as ferramentas que ele passa funcionam de verdade no dia a dia, não só na sessão.</p>
+      <div class="dep-stars">★★★★★</div>
       <div class="dep-autor">F.T. · Engenheiro de Software</div>
     </div>
-    <div class="dep-card fade-in">
+    <div class="dep-card fade-up">
+      <div class="dep-quote">"</div>
       <p class="dep-text">Passei por uma transição de carreira pesada e fui completamente sozinho por meses. Quando finalmente busquei ajuda com o Paulo, percebi o quanto já estava me custando carregar tudo isso.</p>
+      <div class="dep-stars">★★★★★</div>
       <div class="dep-autor">L.A. · Empreendedor</div>
     </div>
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-tag fade-up">Dúvidas frequentes</div>
+  <h2 class="fade-up">Perguntas <em>mais comuns</em></h2>
+  <div class="faq-grid fade-up">
+    <div class="faq-item">
+      <button class="faq-question">
+        Como funciona o atendimento online?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">As sessões acontecem pelo Google Meet, com duração de 50 minutos. Você acessa de qualquer lugar com privacidade e boa conexão de internet. Funciona exatamente como uma sessão presencial, com a comodidade de não precisar se deslocar.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Preciso ter um problema grave para buscar terapia?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Não. A terapia é para qualquer pessoa que queira entender melhor a si mesma, lidar com estresse do dia a dia, melhorar relacionamentos ou simplesmente crescer como pessoa. Você não precisa estar em crise para buscar apoio.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Quanto tempo dura o processo terapêutico?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Depende dos objetivos de cada pessoa. A TCC tende a ser uma abordagem mais focada e com resultados mais rápidos que outras abordagens. Em média, muitos pacientes notam mudanças significativas entre 3 e 6 meses de processo.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Como funciona o agendamento?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Basta me enviar uma mensagem pelo WhatsApp. Conversamos brevemente sobre o que você está vivendo, verificamos disponibilidade de horários e agendamos a primeira sessão. Simples e sem burocracia.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        O sigilo das sessões é garantido?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Sim. O sigilo é um princípio ético fundamental da psicologia, garantido pelo Código de Ética Profissional. Tudo que é compartilhado nas sessões permanece absolutamente confidencial.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">
+        Qual a diferença entre psicólogo e psiquiatra?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">O psiquiatra é médico e pode prescrever medicamentos. O psicólogo trabalha com psicoterapia — conversas estruturadas para entender e transformar padrões de pensamento e comportamento. Em muitos casos, as duas abordagens se complementam.</div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
-<section class="cta" id="contato">
-  <p class="section-label fade-in" style="justify-content: center;">Agendar consulta</p>
-  <h2 class="fade-in">Pronto para <em>dar o primeiro passo?</em></h2>
-  <p class="fade-in">Entre em contato pelo WhatsApp. Sem compromisso, sem formulários.</p>
-  <a href="https://wa.me/5511945918890?text=Ol%C3%A1%2C+Paulo!+Gostaria+de+agendar+uma+consulta." class="btn-primary fade-in" target="_blank">
-    <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.528 5.852L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.728.977.993-3.63-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
-    Falar com Paulo
+<section class="cta-section">
+  <h2 class="fade-up">Pronto para <em style="color:rgba(255,255,255,0.7)">dar o primeiro passo?</em></h2>
+  <p class="fade-up">Entre em contato pelo WhatsApp. Sem compromisso, sem formulários. Só uma conversa.</p>
+  <a href="https://wa.me/5511945918890?text=Ol%C3%A1%2C+Paulo!+Gostaria+de+agendar+uma+consulta." class="btn-white fade-up" target="_blank">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.528 5.852L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.728.977.993-3.63-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+    Falar com Paulo agora
   </a>
 </section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Paulo Vokurka</div>
-  <div class="footer-info">
-    Psicólogo Clínico · TCC · Atendimento Online<br>
-    © 2025 Paulo Vokurka. Todos os direitos reservados.
-  </div>
+  <div class="footer-mid">© 2025 Paulo Vokurka · Todos os direitos reservados</div>
+  <div class="footer-right">Psicólogo Clínico · CRP 06/211865<br>Atendimento 100% Online</div>
 </footer>
 
 <script>
-  // Fade-in on scroll
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Fade on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        setTimeout(() => e.target.classList.add('visible'), i * 100);
         observer.unobserve(e.target);
       }
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 
 </body>
