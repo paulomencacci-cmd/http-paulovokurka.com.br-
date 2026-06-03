@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paulo Vokurka | Psicólogo Clínico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0d;
+      --surface: #141414;
+      --surface2: #1a1a1a;
+      --border: rgba(255,255,255,0.07);
+      --gold: #b89d6a;
+      --gold-light: #d4b98a;
+      --text: #e8e2d8;
+      --text-muted: #7a7570;
+      --text-dim: #4a4540;
+      --white: #f5f0ea;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(13,13,13,0.95), transparent);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 70% 50%, rgba(184,157,106,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-text { padding-right: 4rem; }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 2rem;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 420px;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--gold);
+      color: #0d0d0d;
+      text-decoration: none;
+      padding: 1rem 2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary svg { width: 18px; height: 18px; }
+
+    .hero-image-wrap {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .hero-image-frame {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      height: 85vh;
+    }
+
+    .hero-image-frame::before {
+      content: '';
+      position: absolute;
+      top: -1px; right: -1px;
+      width: 70%;
+      height: 55%;
+      border-top: 1px solid var(--gold);
+      border-right: 1px solid var(--gold);
+      opacity: 0.4;
+    }
+
+    .hero-image-frame::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: -1px;
+      width: 70%;
+      height: 55%;
+      border-bottom: 1px solid var(--gold);
+      border-left: 1px solid var(--gold);
+      opacity: 0.4;
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(20%) contrast(1.05);
+    }
+
+    .hero-crp {
+      position: absolute;
+      bottom: 2rem;
+      right: -1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* SECTION BASE */
+    section { padding: 7rem 4rem; }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 1.5rem;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 2rem;
+    }
+
+    h2 em { font-style: italic; color: var(--gold-light); }
+
+    /* SOBRE */
+    .sobre {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 6rem;
+      align-items: start;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sobre-left { position: sticky; top: 8rem; }
+
+    .sobre-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    .sobre-text p:first-child {
+      font-size: 1.1rem;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .sobre-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      padding: 0.4rem 1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* PARA QUEM É */
+    .para-quem { background: var(--bg); }
+
+    .para-quem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 4rem;
+      border: 1px solid var(--border);
+    }
+
+    .para-quem-card {
+      background: var(--surface);
+      padding: 2.5rem;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .para-quem-card:hover { background: var(--surface2); }
+
+    .card-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.03em;
+    }
+
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* COMO FUNCIONA */
+    .como-funciona { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .steps {
+      margin-top: 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 2rem;
+      align-items: start;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .step:last-child { border-bottom: none; }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--gold);
+      opacity: 0.5;
+      line-height: 1;
+      padding-top: 0.2rem;
+    }
+
+    .step-content h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-content p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 580px;
+    }
+
+    /* DEPOIMENTOS */
+    .depoimentos { background: var(--bg); }
+
+    .dep-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .dep-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .dep-card::before {
+      content: '\201C';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      color: var(--gold);
+      opacity: 0.2;
+      position: absolute;
+      top: 0.5rem;
+      left: 1.5rem;
+      line-height: 1;
+    }
+
+    .dep-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .dep-autor {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* CTA */
+    .cta {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 8rem 4rem;
+    }
+
+    .cta h2 { margin-bottom: 1rem; }
+
+    .cta p {
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      font-size: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-info {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-align: right;
+      line-height: 1.7;
+    }
+
+    /* DIVIDER */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      opacity: 0.2;
+    }
+
+    /* ANIMATIONS */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 6rem 1.5rem 3rem;
+        min-height: auto;
+      }
+
+      .hero-text { padding-right: 0; }
+
+      .hero-image-wrap {
+        height: 70vw;
+        margin-top: 3rem;
+      }
+
+      .hero-image-frame { height: 100%; max-width: 100%; }
+
+      section { padding: 4rem 1.5rem; }
+
+      .sobre { grid-template-columns: 1fr; gap: 3rem; }
+      .sobre-left { position: static; }
+
+      .para-quem-grid { grid-template-columns: 1fr; }
+      .dep-grid { grid-template-columns: 1fr; }
+
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      .footer-info { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Paulo Vokurka</div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#para-quem">Para quem</a></li>
+    <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-text fade-in">
+    <p class="hero-eyebrow">Psicólogo Clínico · TCC</p>
+    <h1>Clareza para <em>quem carrega</em> muito</h1>
+    <p class="hero-sub">
+      Atendimento online especializado para profissionais que enfrentam estresse, ansiedade e esgotamento — sem julgamentos, com objetivos reais.
+    </p>
+    <a href="https://wa.me/5511945918890?text=Ol%C3%A1%2C+Paulo!+Gostaria+de+agendar+uma+consulta." class="btn-primary" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.528 5.852L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.728.977.993-3.63-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+      Agendar pelo WhatsApp
+    </a>
+  </div>
+  <div class="hero-image-wrap fade-in">
+    <div class="hero-image-frame">
+      <img src="paulo.png" alt="Paulo Vokurka, Psicólogo" class="hero-img" />
+    </div>
+    <div class="hero-crp">CRP · Psicólogo Clínico</div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section class="sobre" id="sobre">
+  <div class="sobre-left fade-in">
+    <p class="section-label">Sobre mim</p>
+    <h2>Uma escuta que entende <em>o mundo real</em></h2>
+  </div>
+  <div class="sobre-text fade-in">
+    <p>
+      Como psicólogo clínico, utilizo minha sólida bagagem no ambiente corporativo para fundamentar e enriquecer a prática no consultório. Ter vivenciado de perto a rotina intensa, as relações de poder e as complexas engrenagens das organizações me proporciona uma compreensão profunda e realista sobre as dores do profissional moderno.
+    </p>
+    <p>
+      Hoje, dedico-me integralmente à clínica, oferecendo um espaço ético de escuta e acolhimento para auxiliar as pessoas a lidarem com o estresse, a ansiedade, o esgotamento e os impactos que as pressões cotidianas exercem sobre a saúde mental e a vida pessoal.
+    </p>
+    <p>
+      Para guiar esse processo, utilizo a <strong style="color: var(--text)">Terapia Cognitivo-Comportamental (TCC)</strong> — uma abordagem científica, estruturada e focada no presente. O princípio fundamental é que não são as situações em si que nos perturbam, mas sim a maneira como as interpretamos. Em nossas sessões, trabalhamos de forma colaborativa para mapear como esses pensamentos influenciam suas emoções e comportamentos.
+    </p>
+    <div class="sobre-tags">
+      <span class="tag">TCC</span>
+      <span class="tag">Ansiedade</span>
+      <span class="tag">Esgotamento</span>
+      <span class="tag">Saúde Mental Masculina</span>
+      <span class="tag">Estresse Corporativo</span>
+      <span class="tag">Atendimento Online</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PARA QUEM É -->
+<section class="para-quem" id="para-quem">
+  <p class="section-label fade-in">Para quem é</p>
+  <h2 class="fade-in">Você se reconhece <em>em algum desses cenários?</em></h2>
+  <div class="para-quem-grid">
+    <div class="para-quem-card fade-in">
+      <div class="card-number">01</div>
+      <div class="card-title">O profissional sobrecarregado</div>
+      <p class="card-desc">Sente que trabalha demais, não consegue desligar e carrega tudo sozinho. A produtividade está alta, mas o custo interno também.</p>
+    </div>
+    <div class="para-quem-card fade-in">
+      <div class="card-number">02</div>
+      <div class="card-title">Quem convive com ansiedade</div>
+      <p class="card-desc">Pensamentos acelerados, dificuldade de concentração, sensação de que algo vai dar errado. A ansiedade está presente em momentos que antes eram simples.</p>
+    </div>
+    <div class="para-quem-card fade-in">
+      <div class="card-number">03</div>
+      <div class="card-title">O homem que não pede ajuda</div>
+      <p class="card-desc">Cresceu aprendendo a resolver tudo por conta própria. Buscar apoio parece fraqueza — mas o peso está pesado demais para carregar só.</p>
+    </div>
+    <div class="para-quem-card fade-in">
+      <div class="card-number">04</div>
+      <div class="card-title">Quem vive no piloto automático</div>
+      <p class="card-desc">Os dias passam, as entregas acontecem, mas a sensação de esvaziamento persiste. Falta sentido, presença, conexão com o que realmente importa.</p>
+    </div>
+    <div class="para-quem-card fade-in">
+      <div class="card-number">05</div>
+      <div class="card-title">Em transição de vida ou carreira</div>
+      <p class="card-desc">Mudança de emprego, relacionamento, cidade. Momentos de transição trazem incerteza e, muitas vezes, uma crise de identidade silenciosa.</p>
+    </div>
+    <div class="para-quem-card fade-in">
+      <div class="card-number">06</div>
+      <div class="card-title">Quem quer resultados práticos</div>
+      <p class="card-desc">Não quer só desabafar. Quer entender o que está acontecendo e desenvolver ferramentas concretas para mudar padrões que já não servem.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COMO FUNCIONA -->
+<section class="como-funciona" id="como-funciona">
+  <p class="section-label fade-in">Como funciona</p>
+  <h2 class="fade-in">Simples, online e <em>no seu ritmo</em></h2>
+  <div class="steps">
+    <div class="step fade-in">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <h3>Primeiro contato pelo WhatsApp</h3>
+        <p>Mande uma mensagem descrevendo brevemente o que você está vivendo. Sem formulários, sem burocracia. Responderei para conversarmos sobre disponibilidade e tirar qualquer dúvida antes de marcarmos.</p>
+      </div>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <h3>Sessão inicial de avaliação</h3>
+        <p>A primeira sessão é um espaço para nos conhecermos. Você conta o que está acontecendo, eu explico como trabalhamos juntos e avaliamos se faz sentido seguir em frente.</p>
+      </div>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <h3>Atendimento semanal pelo Google Meet</h3>
+        <p>As sessões acontecem online, por vídeo, com duração de 50 minutos. Você acessa de onde estiver — de casa, do escritório, de qualquer lugar com privacidade.</p>
+      </div>
+    </div>
+    <div class="step fade-in">
+      <div class="step-num">04</div>
+      <div class="step-content">
+        <h3>Trabalho colaborativo com objetivos claros</h3>
+        <p>Não existe um roteiro rígido, mas existe direção. Usamos a TCC para identificar padrões, desenvolver ferramentas práticas e monitorar seu progresso ao longo do processo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="depoimentos" id="depoimentos">
+  <p class="section-label fade-in">Depoimentos</p>
+  <h2 class="fade-in">O que dizem <em>quem já deu o passo</em></h2>
+  <div class="dep-grid">
+    <div class="dep-card fade-in">
+      <p class="dep-text">Cheguei achando que só precisava de uma válvula de escape. Fui entendendo que o problema era mais fundo — e o Paulo foi cirúrgico em me ajudar a ver isso sem me fazer sentir fraco por isso.</p>
+      <div class="dep-autor">M.R. · Gerente de Projetos</div>
+    </div>
+    <div class="dep-card fade-in">
+      <p class="dep-text">Nunca fui de falar sobre o que sinto. O Paulo cria um ambiente onde isso vira natural. E as ferramentas que ele passa funcionam de verdade no dia a dia, não só na sessão.</p>
+      <div class="dep-autor">F.T. · Engenheiro de Software</div>
+    </div>
+    <div class="dep-card fade-in">
+      <p class="dep-text">Passei por uma transição de carreira pesada e fui completamente sozinho por meses. Quando finalmente busquei ajuda com o Paulo, percebi o quanto já estava me custando carregar tudo isso.</p>
+      <div class="dep-autor">L.A. · Empreendedor</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contato">
+  <p class="section-label fade-in" style="justify-content: center;">Agendar consulta</p>
+  <h2 class="fade-in">Pronto para <em>dar o primeiro passo?</em></h2>
+  <p class="fade-in">Entre em contato pelo WhatsApp. Sem compromisso, sem formulários.</p>
+  <a href="https://wa.me/5511945918890?text=Ol%C3%A1%2C+Paulo!+Gostaria+de+agendar+uma+consulta." class="btn-primary fade-in" target="_blank">
+    <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.528 5.852L0 24l6.335-1.652A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.007-1.371l-.36-.213-3.728.977.993-3.63-.234-.374A9.818 9.818 0 1112 21.818z"/></svg>
+    Falar com Paulo
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Paulo Vokurka</div>
+  <div class="footer-info">
+    Psicólogo Clínico · TCC · Atendimento Online<br>
+    © 2025 Paulo Vokurka. Todos os direitos reservados.
+  </div>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
