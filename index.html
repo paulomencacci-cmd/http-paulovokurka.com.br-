@@ -18,17 +18,11 @@
   <!-- 2. INÍCIO: SCRIPT DE MAPEAMENTO DO WHATSAPP -->
   <script>
     function gtag_report_conversion(url) {
-      var callback = function () {
-        if (typeof(url) != 'undefined') {
-          window.open(url, '_blank');
-        }
-      };
-      // ATENÇÃO: Substitua 'CONVERSION_LABEL' pelo ID/Rótulo exato gerado no seu Snippet de evento do Google Ads
-gtag('event', 'conversion', {
-    'send_to': 'AW-18207921016/1IIjCLmctrgcEPImm-pD',
-    'event_callback': callback
-	});
-return false;
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18207921016/1IIjCLmctrgcEPImm-pD',
+        'event_callback': function() {}
+      });
+      return true; // permite que o link <a> abra normalmente
     }
   </script>
   <!-- FIM: SCRIPT DE MAPEAMENTO -->
