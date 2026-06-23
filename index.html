@@ -18,11 +18,20 @@
   <!-- 2. INÍCIO: SCRIPT DE MAPEAMENTO DO WHATSAPP -->
   <script>
     function gtag_report_conversion(url) {
+      var navegou = false;
+      function irParaWhatsapp() {
+        if (navegou) return;
+        navegou = true;
+        window.location.href = url;
+      }
       gtag('event', 'conversion', {
         'send_to': 'AW-18207921016/xlcJCNaTkLwcEPimm-pD',
-        'event_callback': function() {}
+        'event_callback': irParaWhatsapp
       });
-      return true; // permite que o link <a> abra normalmente
+      // Garantia: se o gtag não responder rápido (bloqueio, conexão lenta, etc.),
+      // navega mesmo assim após 300ms para não travar o usuário.
+      setTimeout(irParaWhatsapp, 300);
+      return false; // a navegação agora é feita manualmente pela função acima
     }
   </script>
   <!-- FIM: SCRIPT DE MAPEAMENTO -->
