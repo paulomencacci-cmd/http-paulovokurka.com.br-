@@ -12,6 +12,7 @@
     gtag('js', new Date());
 
     gtag('config', 'AW-18207921016');
+    gtag('config', 'G-K21YHEL1BV');
   </script>
   <!-- FIM: TAG DO GOOGLE -->
 
@@ -24,6 +25,10 @@
         navegou = true;
         window.location.href = url;
       }
+      // GA4: registra o clique no WhatsApp como evento
+      gtag('event', 'clique_whatsapp', {
+        'send_to': 'G-K21YHEL1BV'
+      });
       gtag('event', 'conversion', {
         'send_to': 'AW-18207921016/xlcJCNaTkLwcEPimm-pD',
         'event_callback': irParaWhatsapp
